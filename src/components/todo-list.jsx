@@ -1,6 +1,7 @@
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import Todo from "./todo"
 import AddTodo from "./add-todo"
+import Footer from "./footer"
 
 function Todolist(){
   const [todos, setTodos] = useState([
@@ -17,6 +18,10 @@ function Todolist(){
     value: "Push project to GitHub",
     done: false
   }])
+  useEffect(() => {
+    const oldTodos = localStorage.getItem('todos')
+    setTodos(JSON.parse(oldTodos))
+  }, [])
   function handleAddTodo(text) {
     console.log(text)
     const todos2 = todos.slice();
@@ -27,8 +32,9 @@ function Todolist(){
     }
     todos2.push(newTodo)
     setTodos(todos2)
+    localStorage.setItem("todos", JSON.stringify(todos))
+
   }
-  console.log(todos)
     function handleComplete(id){
     const todos2 = todos.slice();
     const Ntodo =todos2.find(todo => todo.id == id)
@@ -38,24 +44,28 @@ function Todolist(){
     function handleDelete(id){
     const todos2 = todos.slice();
     const Ntodo =todos2.find(todo => todo.id == id)
-    todos2.splice(indexOf(Ntodo))
+    todos2.splice(todos2.indexOf(Ntodo), 1)
     setTodos(todos2)
+    localStorage.setItem("todos", JSON.stringify(todos))
+    console.log(localStorage.getItem("todos"))
     }
     
   return (
     <div>
       <AddTodo  setTodo={(text) => handleAddTodo(text)}/>
-   <ul>
+   <ul className="todo-body">
     {todos.map((todo) => (
      <Todo 
       value={todo.value}
       key={todo.id}
       done={todo.done}
-      onDelete={() => handleDelete()}
-      onComplete={() => handleComplete()}
+      id={todo.id}
+      onDelete={(id) => handleDelete(id)}
+      onComplete={(id) => handleComplete(id)}
       />
     ))}
   </ul>
+   <Footer items={todos}/>
     </div>
     )
   }
