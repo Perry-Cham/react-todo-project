@@ -20,7 +20,7 @@ function Todolist(){
   }])
   useEffect(() => {
     const oldTodos = localStorage.getItem('todos')
-    setTodos(JSON.parse(oldTodos))
+    if(oldTodos){ setTodos(JSON.parse(oldTodos))}
   }, [])
   function handleAddTodo(text) {
     console.log(text)
