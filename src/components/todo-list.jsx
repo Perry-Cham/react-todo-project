@@ -37,7 +37,7 @@ function Todolist(){
   }
     function handleComplete(id){
     const todos2 = todos.slice();
-    const Ntodo =todos2.find(todo => todo.id == id)
+    const Ntodo =todos2.find(todo => todo.done !== id)
     Ntodo.done = true;
     setTodos(todos2)
     }
@@ -49,11 +49,15 @@ function Todolist(){
     localStorage.setItem("todos", JSON.stringify(todos))
     console.log(localStorage.getItem("todos"))
     }
-    
+    function handleClear(){
+    const todos2 = todos.slice();
+    const Ntodo =todos2.filter(todo => todo.done !== true)
+    setTodos(todos2)
+    }
   return (
     <div>
       <AddTodo  setTodo={(text) => handleAddTodo(text)}/>
-   <ul className="todo-body">
+   <ul className="todo-body dark-mode-bg">
     {todos.map((todo) => (
      <Todo 
       value={todo.value}
@@ -65,6 +69,12 @@ function Todolist(){
       />
     ))}
   </ul>
+  <div className="counter dark-mode-bg">
+        <p>`{todos.length} {todos.length == 1 ? 'item left' : 'items left'}`</p>
+        <div className="One">
+        <button onClick={() =>{handleClear}}>Clear completed</button>
+        </div>
+  </div>
    <Footer items={todos}/>
     </div>
     )

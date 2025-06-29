@@ -8,7 +8,7 @@ function AddTodo({setTodo}){
     setInput("")
   }
   return(
-  <form className="todo-input">
+  <form className="todo-input dark-mode-bg">
     <input value={input} type="text" placeholder="Create A New Todo" onChange={e => setInput(e.target.value)} />
     <button onClick={(e) => {Add(e)}}>Enter</button>
   </form>)
