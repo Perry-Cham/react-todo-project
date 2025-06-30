@@ -5,8 +5,10 @@ body{
   font-family: 'Segoe UI', Roboto,  'Open sans', 'Helvetica Nue', sans-serif;
   min-height:100vh;
   box-sizing:border-box;
+  --bright-blue: hsl(220, 98%, 61%);
   --dark-mode-blue:hsl(235, 24%, 19%);
   --s-radius:10px;
+  
 }
 .main{
   background-color: hsl(235, 21%, 11%);
@@ -25,6 +27,7 @@ display:flex;
   justify-content:center;
   align-items:center;
   background-image:url(/images/bg-desktop-dark.jpg);
+  background-size:cover;
 }
 .todo-input{
     display:flex;
@@ -38,6 +41,11 @@ display:flex;
 }
 .todo-input input{
   height:1rem;
+  background-color: var(--dark-bg-blue);
+  border:none;
+}
+.todo-input input:focus{
+  outline:solid hsla(235.2,100%,32.6%,0.9);
 }
 .todo-body{
   padding-left: 0;
@@ -48,6 +56,7 @@ display:flex;
 }
 
 .todo {
+  position:relative;
   display:flex;
   justify-content: space-between;
   align-items:center;
@@ -58,20 +67,32 @@ display:flex;
   color:white;
   max-inline-size: 25ch;
   display:inline-block;
+  margin:0;
+  padding: 0;
 }
-.todo span{
-  display:inline-block;
-}
-
 
 .indicator{
-  border: solid black 1px;
+  border: solid white 1px;
   border-radius: 50%;
   width:1rem;
   height:1rem;
+  display:inline-block;
+  margin-right:.5rem;
+}
+.indicator.complete{
+  background: 
+    url('/images/icon-check.svg') no-repeat center / contain,
+    linear-gradient(to bottom, hsl(192, 100%, 67%),hsl(280, 87%, 65%))
 }
 .completed p{
   text-decoration:line-through ;
+}
+.todo-p-wrapper{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-right:1rem;
 }
 .counter{
   display:flex;
@@ -80,6 +101,11 @@ display:flex;
   padding: .5rem 1rem;
   margin-bottom:2rem;
   border-radius:0  0 var(--s-radius) var(--s-radius);
+}
+.counter button{
+  background-color:var(--dark-mode-bg);
+  color:white;
+  border:none;
 }
 .One{
    display:flex;
@@ -107,7 +133,9 @@ display:flex;
   justify-content: space-around;
   align-items: center;
 }
-
+.active-page{
+  color:var(--bright-blue);
+}
 
 .dark-mode-bg{
   background-color: var(--dark-mode-blue);

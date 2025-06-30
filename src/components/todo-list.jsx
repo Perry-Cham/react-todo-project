@@ -4,6 +4,7 @@ import AddTodo from "./add-todo"
 import Footer from "./footer"
 
 function Todolist(){
+  const [page, setPage] = useState("All")
   const [todos, setTodos] = useState([
   {
     id: 1,
@@ -37,7 +38,7 @@ function Todolist(){
   }
     function handleComplete(id){
     const todos2 = todos.slice();
-    const Ntodo =todos2.find(todo => todo.done !== id)
+    const Ntodo =todos2.find(todo => todo.id == id)
     Ntodo.done = true;
     setTodos(todos2)
     }
@@ -70,12 +71,12 @@ function Todolist(){
     ))}
   </ul>
   <div className="counter dark-mode-bg">
-        <p>`{todos.length} {todos.length == 1 ? 'item left' : 'items left'}`</p>
+        <p>{todos.length} {todos.length == 1 ? 'item left' : 'items left'}</p>
         <div className="One">
         <button onClick={() =>{handleClear}}>Clear completed</button>
         </div>
   </div>
-   <Footer items={todos}/>
+   <Footer activePage={page}/>
     </div>
     )
   }

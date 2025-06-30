@@ -1,11 +1,11 @@
-function Footer(){
+function Footer({activePage}){
     return (
     <nav className="footer-navigation dark-mode-bg">
     
             <ul>
-            <li>All</li>
-            <li>Active</li>
-            <li>Completed</li>
+            <li className={activePage == "All" ? "active-page":""}>All</li>
+            <li className={activePage == "Active" ? "active-page":""}>Active</li>
+            <li className={activePage == "Complete" ? "active-page":""}>Completed</li>
             </ul>
 
         </nav>
