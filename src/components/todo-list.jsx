@@ -27,33 +27,33 @@ function Todolist(){
     console.log(text)
     const todos2 = todos.slice();
     const newTodo = {
-      id:todos.length+1,
+      id:Date.now(),
       value: text,
       done:false
     }
     todos2.push(newTodo)
     setTodos(todos2)
-    localStorage.setItem("todos", JSON.stringify(todos))
-
+    localStorage.setItem('todos',JSON.stringify(todos2))
   }
     function handleComplete(id){
     const todos2 = todos.slice();
     const Ntodo =todos2.find(todo => todo.id == id)
     Ntodo.done = true;
     setTodos(todos2)
+    localStorage.setItem('todos',JSON.stringify(todos2))
     }
     function handleDelete(id){
     const todos2 = todos.slice();
     const Ntodo =todos2.find(todo => todo.id == id)
     todos2.splice(todos2.indexOf(Ntodo), 1)
     setTodos(todos2)
-    localStorage.setItem("todos", JSON.stringify(todos))
-    console.log(localStorage.getItem("todos"))
+    localStorage.setItem('todos',JSON.stringify(todos2))
     }
     function handleClear(){
-    const todos2 = todos.slice();
-    const Ntodo =todos2.filter(todo => todo.done !== true)
+    let todos2 = todos.slice();
+    todos2 = todos2.filter(todo => todo.done !== true)
     setTodos(todos2)
+    localStorage.setItem('todos',JSON.stringify(todos2))
     }
   return (
     <div>
@@ -71,9 +71,9 @@ function Todolist(){
     ))}
   </ul>
   <div className="counter dark-mode-bg">
-        <p>{todos.length} {todos.length == 1 ? 'item left' : 'items left'}</p>
+        <p>{todos.filter(todo => todo.done !== true).length} {todos.filter(todo => todo.done !== true).length == 1 ? 'item left' : 'items left'}</p>
         <div className="One">
-        <button onClick={() =>{handleClear}}>Clear completed</button>
+        <button onClick={() =>{handleClear()}}>Clear completed</button>
         </div>
   </div>
    <Footer activePage={page}/>

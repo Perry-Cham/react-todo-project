@@ -7,8 +7,19 @@ body{
   box-sizing:border-box;
   --bright-blue: hsl(220, 98%, 61%);
   --dark-mode-blue:hsl(235, 24%, 19%);
+--very-light-gray: hsl(0, 0%, 98%);
+--very-light-grayish-blue: hsl(236, 33%, 92%);
+--light-grayish-blue: hsl(233, 11%, 84%);
+--dark-grayish-blue: hsl(236, 9%, 61%);
+--very-dark-grayish-blue: hsl(235, 19%, 35%);
+--very-dark-blue: hsl(235, 21%, 11%);
+--light-grayish-blue: hsl(234, 39%, 85%);
+--light-grayish-blue-2: hsl(236, 33%, 92%);
+--dark-grayish-blue: hsl(234, 11%, 52%);
+--very-dark-grayish-blue: hsl(233, 14%, 35%);
+--very-dark-grayish-blue-2: hsl(237, 14%, 26%);
   --s-radius:10px;
-  
+  --font:font-family: 'Segoe UI', Roboto,  'Open sans', 'Helvetica Nue', sans-serif;
 }
 .main{
   background-color: hsl(235, 21%, 11%);
@@ -26,8 +37,10 @@ display:flex;
   flex-direction: column;
   justify-content:center;
   align-items:center;
-  background-image:url(/images/bg-desktop-dark.jpg);
+  position: relative;
   background-size:cover;
+  min-height:100vh;
+  z-index:1;
 }
 .todo-input{
     display:flex;
@@ -43,9 +56,10 @@ display:flex;
   height:1rem;
   background-color: var(--dark-bg-blue);
   border:none;
+  color:white;
 }
 .todo-input input:focus{
-  outline:solid hsla(235.2,100%,32.6%,0.9);
+  outline:none;
 }
 .todo-body{
   padding-left: 0;
@@ -64,7 +78,6 @@ display:flex;
   padding: 1rem 1.5rem;
 }
 .todo p{
-  color:white;
   max-inline-size: 25ch;
   display:inline-block;
   margin:0;
@@ -94,6 +107,10 @@ display:flex;
   align-items: flex-start;
   margin-right:1rem;
 }
+button.delete-todo{
+  background-color: inherit;
+  border:none;
+}
 .counter{
   display:flex;
   flex-direction: row;
@@ -104,9 +121,10 @@ display:flex;
 }
 .counter button{
   background-color:var(--dark-mode-bg);
-  color:white;
   border:none;
+  color:var(--very-dark-grayish-blue)
 }
+
 .One{
    display:flex;
   flex-direction: row;
@@ -114,7 +132,7 @@ display:flex;
   align-items: center;  
 }
 .counter button{
-  height:1.5rem;
+  height:auto;
 }
 .footer-navigation{
   display:flex;
@@ -123,6 +141,7 @@ display:flex;
   align-items: center;  
   width:100%;
   border-radius:var(--s-radius);
+  font-weight:600;
 }
 .footer-navigation ul{
   display:flex;
@@ -139,5 +158,22 @@ display:flex;
 
 .dark-mode-bg{
   background-color: var(--dark-mode-blue);
-  color:white;
+}
+.image.dark{
+  position: absolute;
+  top:0;
+  left:0;
+  height:10rem;
+  width:100vw;
+  background-image:url(/images/bg-desktop-dark.jpg);
+z-index:-1;
+}
+.todo-body.dark-mode-bg p{
+  color:var(--light-grayish-blue);
+}
+.counter.dark-mode-bg{
+  color:var(--very-dark-grayish-blue)
+}
+.footer-navigation.dark-mode-bg{
+  color:var(--very-dark-grayish-blue)
 }

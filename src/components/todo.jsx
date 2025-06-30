@@ -5,7 +5,7 @@ function Todo({value, done, onDelete, onComplete, id}) {
   <span className={`indicator ${done ? "complete": ""}`} onClick={() => onComplete(id)}></span>
     <p className="todo-text">{value}</p>
     </div>
-    <button className="delete-todo" onClick={() => onDelete(id)}>X</button>
+    <button className="delete-todo" onClick={() => onDelete(id)}><img src="/images/icon-cross.svg"/></button>
   </li>)
 }
 export default Todo
