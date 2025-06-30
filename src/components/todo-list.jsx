@@ -4,27 +4,18 @@ import AddTodo from "./add-todo"
 import Footer from "./footer"
 
 function Todolist(){
+  const [allTodos, setAllTodos] = useState([])
   const [page, setPage] = useState("All")
-  const [todos, setTodos] = useState([
-  {
-    id: 1,
-    value: "Finish React basics",
-    done: false
-  },{
-    id: 2,
-    value: "Refactor TodoItem component",
-    done: true
-  },{
-    id: 3,
-    value: "Push project to GitHub",
-    done: false
-  }])
+  const [todos, setTodos] = useState([])
   useEffect(() => {
     const oldTodos = localStorage.getItem('todos')
-    if(oldTodos){ setTodos(JSON.parse(oldTodos))}
+    if(oldTodos){
+      setTodos(JSON.parse(oldTodos))
+      setAllTodos(JSON.parse(oldTodos))
+       
+    }
   }, [])
   function handleAddTodo(text) {
-    console.log(text)
     const todos2 = todos.slice();
     const newTodo = {
       id:Date.now(),
@@ -33,6 +24,7 @@ function Todolist(){
     }
     todos2.push(newTodo)
     setTodos(todos2)
+   setAllTodos(todos2)
     localStorage.setItem('todos',JSON.stringify(todos2))
   }
     function handleComplete(id){
@@ -40,6 +32,7 @@ function Todolist(){
     const Ntodo =todos2.find(todo => todo.id == id)
     Ntodo.done = true;
     setTodos(todos2)
+    setAllTodos(todos2)
     localStorage.setItem('todos',JSON.stringify(todos2))
     }
     function handleDelete(id){
@@ -47,12 +40,14 @@ function Todolist(){
     const Ntodo =todos2.find(todo => todo.id == id)
     todos2.splice(todos2.indexOf(Ntodo), 1)
     setTodos(todos2)
+    setAllTodos(todos2)
     localStorage.setItem('todos',JSON.stringify(todos2))
     }
     function handleClear(){
     let todos2 = todos.slice();
     todos2 = todos2.filter(todo => todo.done !== true)
     setTodos(todos2)
+    setAllTodos(todos2)
     localStorage.setItem('todos',JSON.stringify(todos2))
     }
   return (
@@ -76,9 +71,17 @@ function Todolist(){
         <button onClick={() =>{handleClear()}}>Clear completed</button>
         </div>
   </div>
-   <Footer activePage={page}/>
+   <Footer
+   setActive={setPage}
+   activePage={page}
+   list={todos}
+   setList={setTodos}
+   setAll={setAllTodos}
+   All={allTodos}
+   />
     </div>
     )
   }
+
 
 export default Todolist

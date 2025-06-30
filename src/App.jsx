@@ -7,11 +7,11 @@ function App(){
   <div className="main-body">
       <header className="header">
         <h1 className="heading">TODO</h1>
-        <img src="../public/images/icon-moon.svg"/>
+        <img src="/images/icon-moon.svg"/>
       </header>
       <div className="image dark"></div>
     <Todolist/>
-      <p>Drag and Drop to reorder</p>
+      <p className="message dark-mode-bg">Drag and Drop to reorder</p>
   </div>)
 }
 export default App

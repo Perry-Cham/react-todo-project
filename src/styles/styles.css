@@ -177,3 +177,7 @@ z-index:-1;
 .footer-navigation.dark-mode-bg{
   color:var(--very-dark-grayish-blue)
 }
+.message.dark-mode-bg{
+  color:var(--very-dark-grayish-blue);
+  background-color: inherit;
+}
