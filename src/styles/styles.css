@@ -208,7 +208,7 @@ z-index:-1;
 .todo-body.light-mode, .counter.light-mode, .footer-navigation.light-mode, .todo-input.light-mode{
   background-color: var(--very-light-gray);
 }
-.todo-input.dark-mode-bg input{
+.todo-input.light-mode input{
   color:black;
 }
 .image.light-mode{
