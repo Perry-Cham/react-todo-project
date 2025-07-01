@@ -18,7 +18,7 @@ body{
 --dark-grayish-blue: hsl(234, 11%, 52%);
 --very-dark-grayish-blue: hsl(233, 14%, 35%);
 --very-dark-grayish-blue-2: hsl(237, 14%, 26%);
-  --s-radius:10px;
+  --s-radius:5px;
   --font:font-family: 'Segoe UI', Roboto,  'Open sans', 'Helvetica Nue', sans-serif;
 }
 .main{
@@ -57,6 +57,12 @@ display:flex;
 }
 .todo-input input:focus{
   outline:none;
+}
+.todo-input button{
+  border:none;
+  border-radius:5px;
+  background-color: var(--dark-grayish-blue);
+  color:var(--light-grayish-blue);
 }
 .todo-body{
   padding-left: 0;
@@ -132,6 +138,7 @@ button.delete-todo{
 }
 .counter button{
   height:auto;
+  font-size:1rem;
 }
 .footer-navigation{
   display:flex;
@@ -147,8 +154,8 @@ button.delete-todo{
   flex-direction: row;
   padding: 0;
   list-style:none;
-  width:50%;
-  justify-content: space-around;
+  width:60%;
+  justify-content: space-evenly;
   align-items: center;
 }
 .active-page{
@@ -156,6 +163,7 @@ button.delete-todo{
 }
 .message{
   background-color: inherit;
+  margin-top:2rem;
 }
 /* Dark Mode Styles */
 .dark-mode-bg{
@@ -169,8 +177,10 @@ button.delete-todo{
   left:0;
   height:10rem;
   width:100vw;
-  background-image:url(/images/bg-desktop-dark.jpg);
 z-index:-1;
+}
+.image.dark-mode-bg{
+  background-image:url(/images/bg-desktop-dark.jpg);
 }
 .main-body.dark-mode-bg{
   background-color: var(--very-dark-blue);
@@ -198,8 +208,8 @@ z-index:-1;
 .light-mode{
   background-color: var(--very-light-gray);
   color:var(--very-dark-blue);
-  transition: background-color ease 1s;
-  transition: background-image ease 1s;
+  transition: background-color ease-in-out 1s;
+  transition: background-image ease-in-out 1s;
 }
 
 .main-body.light-mode{
@@ -207,6 +217,9 @@ z-index:-1;
 }
 .todo-body.light-mode, .counter.light-mode, .footer-navigation.light-mode, .todo-input.light-mode{
   background-color: var(--very-light-gray);
+}
+.todo-body.light-mode .todo{
+  border-bottom:solid 1px var(--light-grayish-blue);
 }
 .todo-input.light-mode input{
   color:black;
@@ -216,4 +229,20 @@ z-index:-1;
 }
 .message.light-mode{
   background-color: var(--very-light-grayish-blue);
+}
+.counter.light-mode, .footer-navigation.light-mode{
+  color:var(--very-dark-grayish-blue);
+}
+
+/* RESPONSIVE DESIGN */
+@media only screen and (max-width:650px){
+  .image.dark-mode-bg{
+  background-image:url(/images/bg-mobile-dark.jpg);
+}
+  .image.light-mode{
+  background-image:url(/images/bg-mobile-light.jpg);
+}
+}
+@media only screen and (max-width:650px){
+  
 }

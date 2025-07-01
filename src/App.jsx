@@ -2,9 +2,16 @@ import React from 'react';
 import ReactDom from 'react-dom/client';
 import Todolist from './components/todo-list';
 import './styles/styles.css'
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 function App(){
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(() => {
+     const oldTheme = localStorage.getItem('theme');
+  console.log(oldTheme)
+  return oldTheme || "dark"
+  });
+  useEffect(() => {
+    localStorage.setItem('theme', theme)
+  }, [theme])
   function changeTheme(){
    if(theme === "dark") setTheme("light"); else setTheme("dark")
   }
