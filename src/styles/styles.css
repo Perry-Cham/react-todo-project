@@ -53,9 +53,7 @@ display:flex;
 }
 .todo-input input{
   height:1rem;
-  background-color: var(--dark-bg-blue);
   border:none;
-  color:white;
 }
 .todo-input input:focus{
   outline:none;
@@ -89,6 +87,8 @@ display:flex;
   height:1rem;
   display:inline-block;
   margin-right:.5rem;
+  background-color: inherit;
+  border: solid var(--very-dark-grayish-blue-2) 1px;
 }
 .indicator.complete{
   background: 
@@ -154,7 +154,9 @@ button.delete-todo{
 .active-page{
   color:var(--bright-blue);
 }
-
+.message{
+  background-color: inherit;
+}
 /* Dark Mode Styles */
 .dark-mode-bg{
   background-color: var(--dark-mode-blue);
@@ -176,9 +178,11 @@ z-index:-1;
 .todo-body.dark-mode-bg p{
   color:var(--light-grayish-blue);
 }
-.indicator.dark-mode-bg{
-  border: solid var(--very-dark-grayish-blue-2) 1px;
+.todo-input.dark-mode-bg input{
+  color:white;
+  background-color: var(--dark-mode-blue);
 }
+
 .counter.dark-mode-bg{
   color:var(--very-dark-grayish-blue)
 }
@@ -187,7 +191,7 @@ z-index:-1;
 }
 .message.dark-mode-bg{
   color:var(--very-dark-grayish-blue);
-  background-color: inherit;
+  background-color: var(--very-dark-blue);
 }
 
 /* Light Mode Styles */
@@ -197,18 +201,19 @@ z-index:-1;
   transition: background-color ease 1s;
   transition: background-image ease 1s;
 }
-.main.light-mode{
-  background-color: var(--very-light-grayish-blue);
-}
+
 .main-body.light-mode{
   background-color: var(--very-light-grayish-blue);
 }
 .todo-body.light-mode, .counter.light-mode, .footer-navigation.light-mode, .todo-input.light-mode{
   background-color: var(--very-light-gray);
 }
+.todo-input.dark-mode-bg input{
+  color:black;
+}
 .image.light-mode{
   background-image:url(/images/bg-desktop-light.jpg);
 }
-.todo-body.lightmode .indicator{
-  background-color: inheirt;
+.message.light-mode{
+  background-color: var(--very-light-grayish-blue);
 }

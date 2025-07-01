@@ -19,7 +19,7 @@ function App(){
     <Todolist
     theme={theme}
     />
-      <p className="message dark-mode-bg">Drag and Drop to reorder</p>
+      <p className={`message ${themeCheck}`}>Drag and Drop to reorder</p>
   </div>)
 }
 export default App
