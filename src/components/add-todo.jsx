@@ -1,5 +1,5 @@
 import {useState} from 'react'
-function AddTodo({setTodo}){
+function AddTodo({setTodo, theme}){
   const [input, setInput] = useState('')
   function  Add(e){
     e.preventDefault();
@@ -8,7 +8,7 @@ function AddTodo({setTodo}){
     setInput("")
   }
   return(
-  <form className="todo-input dark-mode-bg">
+  <form className={`todo-input ${theme}`}>
     <input value={input} type="text" placeholder="Create A New Todo" onChange={e => setInput(e.target.value)} />
     <button onClick={(e) => {Add(e)}}>Enter</button>
   </form>)

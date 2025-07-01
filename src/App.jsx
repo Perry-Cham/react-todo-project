@@ -8,14 +8,17 @@ function App(){
   function changeTheme(){
    if(theme === "dark") setTheme("light"); else setTheme("dark")
   }
+  const themeCheck = theme === 'dark' ? "dark-mode-bg" : "light-mode";
   return(
-  <div className="main-body">
+  <div className={`main-body ${themeCheck}`}>
       <header className="header">
         <h1 className="heading">TODO</h1>
         <img onClick={() => changeTheme()} src={theme == "dark" ? "/images/icon-moon.svg" : "/images/icon-sun.svg"}/>
       </header>
-      <div className="image dark"></div>
-    <Todolist/>
+      <div className={`image ${themeCheck}`}></div>
+    <Todolist
+    theme={theme}
+    />
       <p className="message dark-mode-bg">Drag and Drop to reorder</p>
   </div>)
 }

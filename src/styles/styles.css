@@ -22,7 +22,6 @@ body{
   --font:font-family: 'Segoe UI', Roboto,  'Open sans', 'Helvetica Nue', sans-serif;
 }
 .main{
-  background-color: hsl(235, 21%, 11%);
   min-height:100vw;
 }
 .header{
@@ -98,6 +97,7 @@ display:flex;
 }
 .completed p{
   text-decoration:line-through ;
+  color:var(--very-dark-grayish-blue);
 }
 .todo-p-wrapper{
   display:flex;
@@ -155,10 +155,13 @@ button.delete-todo{
   color:var(--bright-blue);
 }
 
+/* Dark Mode Styles */
 .dark-mode-bg{
   background-color: var(--dark-mode-blue);
+  transition: background-image ease 1s;
+  transition: background-color ease 1s;
 }
-.image.dark{
+.image{
   position: absolute;
   top:0;
   left:0;
@@ -166,6 +169,9 @@ button.delete-todo{
   width:100vw;
   background-image:url(/images/bg-desktop-dark.jpg);
 z-index:-1;
+}
+.main-body.dark-mode-bg{
+  background-color: var(--very-dark-blue);
 }
 .todo-body.dark-mode-bg p{
   color:var(--light-grayish-blue);
@@ -184,3 +190,25 @@ z-index:-1;
   background-color: inherit;
 }
 
+/* Light Mode Styles */
+.light-mode{
+  background-color: var(--very-light-gray);
+  color:var(--very-dark-blue);
+  transition: background-color ease 1s;
+  transition: background-image ease 1s;
+}
+.main.light-mode{
+  background-color: var(--very-light-grayish-blue);
+}
+.main-body.light-mode{
+  background-color: var(--very-light-grayish-blue);
+}
+.todo-body.light-mode, .counter.light-mode, .footer-navigation.light-mode, .todo-input.light-mode{
+  background-color: var(--very-light-gray);
+}
+.image.light-mode{
+  background-image:url(/images/bg-desktop-light.jpg);
+}
+.todo-body.lightmode .indicator{
+  background-color: inheirt;
+}

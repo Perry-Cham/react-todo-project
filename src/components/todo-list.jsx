@@ -3,7 +3,7 @@ import Todo from "./todo"
 import AddTodo from "./add-todo"
 import Footer from "./footer"
 
-function Todolist(){
+function Todolist({theme}){
   const [allTodos, setAllTodos] = useState([])
   const [page, setPage] = useState("All")
   const [todos, setTodos] = useState([])
@@ -50,10 +50,14 @@ function Todolist(){
     setAllTodos(todos2)
     localStorage.setItem('todos',JSON.stringify(todos2))
     }
+    const themeCheck = theme === 'dark' ? "dark-mode-bg" : "light-mode";
   return (
     <div>
-      <AddTodo  setTodo={(text) => handleAddTodo(text)}/>
-   <ul className="todo-body dark-mode-bg">
+      <AddTodo  
+      setTodo={(text) => handleAddTodo(text)}
+      theme={themeCheck}
+      />
+   <ul className={`todo-body ${themeCheck}`}>
     {todos.map((todo) => (
      <Todo 
       value={todo.value}
@@ -62,10 +66,11 @@ function Todolist(){
       id={todo.id}
       onDelete={(id) => handleDelete(id)}
       onComplete={(id) => handleComplete(id)}
+      theme={themeCheck}
       />
     ))}
   </ul>
-  <div className="counter dark-mode-bg">
+  <div className={`counter ${themeCheck}`}>
         <p>{todos.filter(todo => todo.done !== true).length} {todos.filter(todo => todo.done !== true).length == 1 ? 'item left' : 'items left'}</p>
         <div className="One">
         <button onClick={() =>{handleClear()}}>Clear completed</button>
@@ -78,6 +83,7 @@ function Todolist(){
    setList={setTodos}
    setAll={setAllTodos}
    All={allTodos}
+   theme={themeCheck}
    />
     </div>
     )

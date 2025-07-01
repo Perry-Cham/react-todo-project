@@ -1,4 +1,4 @@
-function Footer({setActive, activePage, list, setList, All, setAll}){
+function Footer({setActive, activePage, list, setList, All, setAll, theme}){
  function all(){
       const todos = All.slice();
       setActive("All")
@@ -17,7 +17,7 @@ function completed(){
   
 }
     return (
-    <nav className="footer-navigation dark-mode-bg">
+    <nav className={`footer-navigation ${theme}`}>
             <ul>
             <li onClick={() => all()} className={activePage == "All" ? "active-page":""}>All</li>
             <li onClick={() => active()} className={activePage == "Active" ? "active-page":""}>Active</li>
