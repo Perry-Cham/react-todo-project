@@ -2,7 +2,7 @@
 body{
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Roboto,  'Open sans', 'Helvetica Nue', sans-serif;
+  font-family: "Josefin Sans", 'Segoe UI', Roboto,  'Open sans', 'Helvetica Nue', sans-serif;
   min-height:100vh;
   box-sizing:border-box;
   --bright-blue: hsl(220, 98%, 61%);
@@ -19,7 +19,7 @@ body{
 --very-dark-grayish-blue: hsl(233, 14%, 35%);
 --very-dark-grayish-blue-2: hsl(237, 14%, 26%);
   --s-radius:5px;
-  --font:font-family: 'Segoe UI', Roboto,  'Open sans', 'Helvetica Nue', sans-serif;
+  --font:font-family: "Josefin Sans", 'Segoe UI', Roboto,  'Open sans', 'Helvetica Nue', sans-serif;
 }
 .main{
   min-height:100vw;
@@ -54,6 +54,7 @@ display:flex;
 .todo-input input{
   height:1rem;
   border:none;
+  font-family:var(--font);
 }
 .todo-input input:focus{
   outline:none;
@@ -63,6 +64,7 @@ display:flex;
   border-radius:5px;
   background-color: var(--dark-grayish-blue);
   color:var(--light-grayish-blue);
+  font-family:var(--font);
 }
 .todo-body{
   padding-left: 0;
@@ -101,9 +103,9 @@ display:flex;
     url('/images/icon-check.svg') no-repeat center / contain,
     linear-gradient(to bottom, hsl(192, 100%, 67%),hsl(280, 87%, 65%))
 }
-.completed p{
+.complete p{
   text-decoration:line-through ;
-  color:var(--very-dark-grayish-blue);
+color:var(--very-dark-grayish-blue)!important; 
 }
 .todo-p-wrapper{
   display:flex;
@@ -116,6 +118,21 @@ button.delete-todo{
   background-color: inherit;
   border:none;
 }
+.No-todos{
+  background-color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+.No-todos img{
+  height:200px;
+  width:auto;
+}
+.No-todos p{
+  margin-top:1rem;
+}
 .counter{
   display:flex;
   flex-direction: row;
@@ -127,7 +144,8 @@ button.delete-todo{
 .counter button{
   background-color:var(--dark-mode-bg);
   border:none;
-  color:var(--very-dark-grayish-blue)
+  color:var(--very-dark-grayish-blue);
+  font-family:var(--font);
 }
 
 .One{
@@ -161,6 +179,12 @@ button.delete-todo{
 .active-page{
   color:var(--bright-blue);
 }
+.footer-navigation.show-footer{
+    display:flex;
+  }
+  .footer-navigation.hide-footer{
+    display:none;
+  }
 .message{
   background-color: inherit;
   margin-top:2rem;
@@ -185,22 +209,20 @@ z-index:-1;
 .main-body.dark-mode-bg{
   background-color: var(--very-dark-blue);
 }
-.todo-body.dark-mode-bg p{
+.todo-body.dark-mode-bg p, No-todos-p{
   color:var(--light-grayish-blue);
 }
+
 .todo-input.dark-mode-bg input{
   color:white;
   background-color: var(--dark-mode-blue);
 }
 
-.counter.dark-mode-bg{
+.counter.dark-mode-bg, .footer-navigation.dark-mode-bg, .message.dark-mode-bg{
   color:var(--very-dark-grayish-blue)
 }
-.footer-navigation.dark-mode-bg{
-  color:var(--very-dark-grayish-blue)
-}
+
 .message.dark-mode-bg{
-  color:var(--very-dark-grayish-blue);
   background-color: var(--very-dark-blue);
 }
 
@@ -243,6 +265,17 @@ z-index:-1;
   background-image:url(/images/bg-mobile-light.jpg);
 }
 }
-@media only screen and (max-width:650px){
-  
+@media only screen and (min-width:650px){
+ .footer-navigation{
+   width:12rem;
+ }
+   .footer-navigation ul{
+     width:100%;
+}
+  .One{
+    margin-left:1rem;
+  }
+  .counter p{
+    margin-right:1rem;
+  } 
 }

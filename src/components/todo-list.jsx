@@ -1,18 +1,19 @@
 import {useState, useEffect} from "react"
 import Todo from "./todo"
 import AddTodo from "./add-todo"
+import Counter from "./counter.jsx"
 import Footer from "./footer"
 
 function Todolist({theme}){
   const [allTodos, setAllTodos] = useState([])
   const [page, setPage] = useState("All")
   const [todos, setTodos] = useState([])
+  const viewPort = window.innerWidth;
   useEffect(() => {
     const oldTodos = localStorage.getItem('todos')
     if(oldTodos){
       setTodos(JSON.parse(oldTodos))
       setAllTodos(JSON.parse(oldTodos))
-       
     }
   }, [])
   function handleAddTodo(text) {
@@ -57,7 +58,7 @@ function Todolist({theme}){
       setTodo={(text) => handleAddTodo(text)}
       theme={themeCheck}
       />
-   <ul className={`todo-body ${themeCheck}`}>
+  {todos.length > 0 ? <ul className={`todo-body ${themeCheck}`}>
     {todos.map((todo) => (
      <Todo 
       value={todo.value}
@@ -69,14 +70,22 @@ function Todolist({theme}){
       theme={themeCheck}
       />
     ))}
-  </ul>
-  <div className={`counter ${themeCheck}`}>
-        <p>{todos.filter(todo => todo.done !== true).length} {todos.filter(todo => todo.done !== true).length == 1 ? 'item left' : 'items left'}</p>
-        <div className="One">
-        <button onClick={() =>{handleClear()}}>Clear completed</button>
-        </div>
-  </div>
-   <Footer
+  </ul>: <div className={`No-todos ${themeCheck ? "dark-mode-bg": "light-mode"}`}>
+    <img src="/images/booklet-fill.svg"/>
+    <p clasName="No-todos-p">No todo's yet</p>
+  </div>}
+  <Counter 
+  setActive={setPage}
+   activePage={page}
+   list={todos}
+   setList={setTodos}
+   setAll={setAllTodos}
+   All={allTodos}
+   theme={themeCheck}
+   todos={todos}
+   viewPort={viewPort}
+  />
+  {viewPort < 650 && <Footer
    setActive={setPage}
    activePage={page}
    list={todos}
@@ -84,7 +93,7 @@ function Todolist({theme}){
    setAll={setAllTodos}
    All={allTodos}
    theme={themeCheck}
-   />
+   />}
     </div>
     )
   }

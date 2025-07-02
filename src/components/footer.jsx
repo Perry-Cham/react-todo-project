@@ -14,10 +14,9 @@ function completed(){
   const activeTodos = All.filter((todos) => todos.done === true)
     setActive("Complete")
       setList(activeTodos)
-  
 }
     return (
-    <nav className={`footer-navigation ${theme}`}>
+    <nav className={`footer-navigation  ${theme}`}>
             <ul>
             <li onClick={() => all()} className={activePage == "All" ? "active-page":""}>All</li>
             <li onClick={() => active()} className={activePage == "Active" ? "active-page":""}>Active</li>
