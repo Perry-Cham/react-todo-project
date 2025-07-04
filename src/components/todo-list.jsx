@@ -1,4 +1,12 @@
 import {useState, useEffect} from "react"
+import { DndContext, closestCorners, useSensors, useSensor, PointerSensor, TouchSensor, KeyboardSensor } from "@dnd-kit/core";
+import { 
+  SortableContext, 
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+  arrayMove
+} from "@dnd-kit/sortable";
+
 import Todo from "./todo"
 import AddTodo from "./add-todo"
 import Counter from "./counter.jsx"
@@ -53,14 +61,41 @@ function Todolist({theme}){
     localStorage.setItem('todos',JSON.stringify(todos2))
     }
     const themeCheck = theme === 'dark' ? "dark-mode-bg" : "light-mode";
+    const getPos = (id) => {
+      const index = todos.findIndex(item => item.id == id )
+      return index;
+    }
+    function handleDragEnd(event){
+      const {active, over} = event;
+      if(!over || active.id === over.id) return;
+      
+      const oldPos = getPos(active.id)
+      const newPos = getPos(over.id)
+      const newTodos = arrayMove(todos, oldPos, newPos)
+      
+      setTodos(newTodos)
+      setAllTodos(newTodos)
+      localStorage.setItem('todos', JSON.stringify(newTodos))
+    }
+    const sensors = useSensors(
+      useSensor(TouchSensor),
+      useSensor(KeyboardSensor, {
+        coordinateGetter: sortableKeyboardCoordinates,
+      })
+    )
   return (
     <div>
       <AddTodo  
       setTodo={(text) => handleAddTodo(text)}
       theme={themeCheck}
       />
-  {todos.length > 0 ? <ul className={`todo-body ${themeCheck}`}>
-    {todos.map((todo) => (
+      
+      <DndContext sensors={sensors} onDragEnd={handleDragEnd}
+      collisionDetection={closestCorners}
+      >
+          {todos.length > 0 ? <ul className={`todo-body ${themeCheck}`}>
+            <SortableContext items={todos} strategy={verticalListSortingStrategy}>
+                  {todos.map((todo) => (
      <Todo 
       value={todo.value}
       key={todo.id}
@@ -71,10 +106,16 @@ function Todolist({theme}){
       theme={themeCheck}
       />
     ))}
-  </ul>: <div className={`No-todos ${themeCheck ? "dark-mode-bg": "light-mode"}`}>
-    <img src="/images/booklet-fill.svg"/>
-    <p clasName="No-todos-p">No todo's yet</p>
+            </SortableContext>
+
+  </ul>: <div className={`No-todos ${themeCheck}`}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 2V22H4V18H2V16H4V13H2V11H4V8H2V6H4V2H8ZM20.0049 2C21.1068 2 22 2.89821 22 3.9908V20.0092C22 21.1087 21.1074 22 20.0049 22H10V2H20.0049Z"></path></svg>
+    <p className="No-todos-p">No todo's yet</p>
   </div>}
+      </DndContext>
+
+  
+  
   <Counter 
   setActive={setPage}
    activePage={page}

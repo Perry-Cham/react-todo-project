@@ -125,7 +125,7 @@ button.delete-todo{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+  border-radius:var(--s-radius) var(--s-radius) 0 0;
 }
 .No-todos img{
   height:200px;
@@ -213,10 +213,13 @@ z-index:-1;
 .main-body.dark-mode-bg{
   background-color: var(--very-dark-blue);
 }
-.todo-body.dark-mode-bg p, No-todos-p{
+.todo-body.dark-mode-bg p, .No-todos.dark-mode-bg p, .No-todos svg{
   color:var(--light-grayish-blue);
 }
 
+/* .No-todos p{
+  color:;
+} */
 .todo-input.dark-mode-bg input{
   color:white;
   background-color: var(--dark-mode-blue);
@@ -241,7 +244,7 @@ z-index:-1;
 .main-body.light-mode{
   background-color: var(--very-light-grayish-blue);
 }
-.todo-body.light-mode, .counter.light-mode, .footer-navigation.light-mode, .todo-input.light-mode{
+.todo-body.light-mode, .counter.light-mode, .footer-navigation.light-mode, .todo-input.light-mode, .No-todos.light-mode p, .No-todos.light-mode svg{
   background-color: var(--very-light-gray);
 }
 .todo-body.light-mode .todo{
@@ -256,12 +259,20 @@ z-index:-1;
 .message.light-mode{
   background-color: var(--very-light-grayish-blue);
 }
-.counter.light-mode, .footer-navigation.light-mode{
+.counter.light-mode, .footer-navigation.light-mode,  .No-todos.light-mode p, .No-todos.light-mode svg{
   color:var(--very-dark-grayish-blue);
 }
 
 /* RESPONSIVE DESIGN */
+@media only screen and (max-width:500px){
+  .todo p{
+    max-inline-size: 20ch;
+  }
+}
 @media only screen and (max-width:650px){
+  .todo p{
+    max-inline-size: 20ch;
+  }
   .image.dark-mode-bg{
   background-image:url(/images/bg-mobile-dark.jpg);
 }
