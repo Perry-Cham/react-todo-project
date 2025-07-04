@@ -22,7 +22,7 @@ body{
   --font:font-family: "Josefin Sans", 'Segoe UI', Roboto,  'Open sans', 'Helvetica Nue', sans-serif;
 }
 .main{
-  min-height:100vw;
+  min-height:100vh;
 }
 .header{
   display:flex;
@@ -31,6 +31,15 @@ body{
   flex-direction: row;
   width:clamp(320px,40%,1000px);
 }
+.image{
+  position: absolute;
+  top:0;
+  left:0;
+  height:10rem;
+  width:100vw;
+  object-fit:cover;
+z-index:-1;
+}
 .main-body{
 display:flex;
   flex-direction: column;
@@ -38,7 +47,7 @@ display:flex;
   align-items:center;
   position: relative;
   background-size:cover;
-  min-height:100vh;
+  min-height:100%;
   z-index:1;
 }
 .todo-input{
@@ -127,7 +136,7 @@ button.delete-todo{
   align-items: center;
   border-radius:var(--s-radius) var(--s-radius) 0 0;
 }
-.No-todos img{
+.No-todos svg{
   height:200px;
   width:auto;
 }
@@ -199,14 +208,7 @@ button.delete-todo{
   transition: background-image ease 1s;
   transition: background-color ease 1s;
 }
-.image{
-  position: absolute;
-  top:0;
-  left:0;
-  height:10rem;
-  width:100vw;
-z-index:-1;
-}
+
 .image.dark-mode-bg{
   background-image:url(/images/bg-desktop-dark.jpg);
 }
