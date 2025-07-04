@@ -6,12 +6,15 @@ import {useState, useEffect} from 'react';
 function App(){
   const [theme, setTheme] = useState(() => {
      const oldTheme = localStorage.getItem('theme');
-  console.log(oldTheme)
   return oldTheme || "dark"
   });
   useEffect(() => {
     localStorage.setItem('theme', theme)
   }, [theme])
+  
+/*  const isDeviceThemeDark = window.matchMedia('(prefers-color-scheme:dark)').matches;
+  isDeviceThemeDark ? setTheme("dark"): setTheme("light"); */
+  
   function changeTheme(){
    if(theme === "dark") setTheme("light"); else setTheme("dark")
   }

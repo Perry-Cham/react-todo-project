@@ -4,6 +4,7 @@ import AddTodo from "./add-todo"
 import Counter from "./counter.jsx"
 import Footer from "./footer"
 
+
 function Todolist({theme}){
   const [allTodos, setAllTodos] = useState([])
   const [page, setPage] = useState("All")
