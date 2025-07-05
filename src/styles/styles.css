@@ -297,7 +297,10 @@ button.delete-todo{
    .footer-navigation ul{
      width:100%;
 }
-.footer-navigation li:hover{
+.footer-navigation li.dark-mode-bg:hover{
+   color:var(--light-grayish-blue);
+ }
+.footer-navigation li.light-mode:hover{
    color:var(--very-dark-blue);
  }
   .One{
@@ -306,4 +309,8 @@ button.delete-todo{
   .counter p{
     margin-right:1rem;
   } 
+}
+
+.drag-handle{
+  touch-action:none
 }
