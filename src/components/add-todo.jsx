@@ -8,9 +8,8 @@ function AddTodo({setTodo, theme}){
     setInput("")
   }
   return(
-  <form className={`todo-input ${theme}`}>
+  <form onSubmit={(e) => Add(e)} className={`todo-input ${theme}`}>
     <input value={input} type="text" placeholder="Create A New Todo" onChange={e => setInput(e.target.value)} />
-    <button onClick={(e) => {Add(e)}}>Enter</button>
   </form>)
 }
 export default AddTodo

@@ -21,10 +21,10 @@ function App(){
   const themeCheck = theme === 'dark' ? "dark-mode-bg" : "light-mode";
   return(
   <div className={`main-body ${themeCheck}`}>
-      <header className="header">
+      <div className="header">
         <h1 className="heading">TODO</h1>
-        <img onClick={() => changeTheme()} src={theme == "dark" ? "/images/icon-moon.svg" : "/images/icon-sun.svg"}/>
-      </header>
+        <img alt={theme == "dark" ? "crescent moon icon": "sun icon"} onClick={() => changeTheme()} src={theme == "dark" ? "/images/icon-moon.svg" : "/images/icon-sun.svg"}/>
+      </div>
       <div className={`image ${themeCheck}`}></div>
     <Todolist
     theme={theme}
