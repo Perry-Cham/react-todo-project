@@ -5,6 +5,7 @@ body{
   font-family: "Josefin Sans", 'Segoe UI', Roboto,  'Open sans', 'Helvetica Nue', sans-serif;
   box-sizing:border-box;
   border-bottom:solid 2px ;
+  min-height:100vh;
   --bright-blue: hsl(220, 98%, 61%);
   --dark-mode-blue:hsl(235, 24%, 19%);
 --very-light-gray: hsl(0, 0%, 98%);
@@ -21,7 +22,9 @@ body{
   --s-radius:5px;
   --font:font-family: "Josefin Sans", 'Segoe UI', Roboto,  'Open sans', 'Helvetica Nue', sans-serif;
 }
-
+.main{
+  min-height:100%;
+}
 .header{
   display:flex;
   align-items: center;
@@ -35,8 +38,8 @@ body{
   left:0;
   height:10rem;
   width:100vw;
-  object-fit:cover;
 z-index:-1;
+background-size:cover;
 }
 .main-body{
 display:flex;
@@ -45,8 +48,8 @@ display:flex;
   align-items:center;
   position: relative;
   background-size:cover;
-min-height:94vh;
   z-index:1;
+  min-height:100%;
 }
 .todo-input{
     display:flex;
@@ -231,7 +234,6 @@ button.delete-todo{
 .message.dark-mode-bg{
   background-color: var(--very-dark-blue);
 }
-
 /* Light Mode Styles */
 .light-mode{
   background-color: var(--very-light-gray);
