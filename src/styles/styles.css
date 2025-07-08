@@ -4,8 +4,6 @@ body{
   padding: 0;
   font-family: "Josefin Sans", 'Segoe UI', Roboto,  'Open sans', 'Helvetica Nue', sans-serif;
   box-sizing:border-box;
-  border-bottom:solid 2px ;
-  min-height:100vh;
   --bright-blue: hsl(220, 98%, 61%);
   --dark-mode-blue:hsl(235, 24%, 19%);
 --very-light-gray: hsl(0, 0%, 98%);
@@ -22,9 +20,7 @@ body{
   --s-radius:5px;
   --font:font-family: "Josefin Sans", 'Segoe UI', Roboto,  'Open sans', 'Helvetica Nue', sans-serif;
 }
-.main{
-  min-height:100%;
-}
+
 .header{
   display:flex;
   align-items: center;
@@ -37,7 +33,7 @@ body{
   top:0;
   left:0;
   height:10rem;
-  width:100vw;
+  width:100%;
 z-index:-1;
 background-size:cover;
 }
@@ -49,7 +45,7 @@ display:flex;
   position: relative;
   background-size:cover;
   z-index:1;
-  min-height:100%;
+  min-height:100vh;
 }
 .todo-input{
     display:flex;
